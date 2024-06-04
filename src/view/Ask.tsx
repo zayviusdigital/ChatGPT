@@ -1,24 +1,38 @@
 import { useState, useEffect, useRef } from 'react';
 import { invoke } from '@tauri-apps/api/core';
+import { useHotkeys } from 'react-hotkeys-hook';
 
+import useInfo from '~hooks/useInfo';
 import SendIcon from '~icons/Send';
 
 export default function ChatInput() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [message, setMessage] = useState('');
+  const { isMac } = useInfo();
 
   useEffect(() => {
     invoke('ask_sync', { message: JSON.stringify(message) });
   }, [message])
 
+  useHotkeys(isMac ? 'meta+enter' : 'ctrl+enter', async (event: KeyboardEvent) => {
+    event.preventDefault();
+    handleSend();
+  }, {
+    enableOnFormTags: true,
+  }, [message]);
+
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMessage(e.target.value);
   };
 
-  const handleSend = () => {
-    invoke('ask_send', { message: JSON.stringify(message) });
+  const handleSend = async () => {
+    if (!message) return;
+    await invoke('ask_send', { message: JSON.stringify(message) });
     setMessage('');
-    if (inputRef.current) inputRef.current.value = '';
+    if (inputRef.current) {
+      inputRef.current.value = '';
+      inputRef.current.focus();
+    }
   };
 
   return (
@@ -35,7 +49,7 @@ export default function ChatInput() {
         size={30}
         className="absolute right-2 text-gray-400/80 dark:text-gray-600 cursor-pointer"
         onClick={handleSend}
-        title="Send message"
+        title={`Send message (${isMac ? '⌘⏎' : '⌃⏎'})`}
       />
     </div>
   );

@@ -14,7 +14,7 @@ import AskIcon from '~icons/Ask';
 import ThemeSystem from '~icons/ThemeSystem';
 import ThemeLight from '~icons/ThemeLight';
 import ThemeDark from '~icons/ThemeDark';
-// import ArrowLeftIcon from '~icons/ArrowLeft';
+import ArrowLeftIcon from '~icons/ArrowLeft';
 
 export default function Titlebar() {
   const info = useInfo();
@@ -72,13 +72,13 @@ export default function Titlebar() {
     invoke('view_reload');
   };
 
-  // const handleGoForward = () => {
-  //   invoke('view_go_forward');
-  // };
+  const handleGoForward = () => {
+    invoke('view_go_forward');
+  };
 
-  // const handleGoBack = () => {
-  //   invoke('view_go_back');
-  // };
+  const handleGoBack = () => {
+    invoke('view_go_back');
+  };
 
   const handlePin = (isPin: boolean) => {
     setPin(isPin);
@@ -144,7 +144,7 @@ export default function Titlebar() {
             {hostname}
           </span>
         )}
-        {/* <ArrowLeftIcon
+        <ArrowLeftIcon
           action
           onClick={handleGoBack}
         />
@@ -152,7 +152,7 @@ export default function Titlebar() {
           action
           onClick={handleGoForward}
           className="rotate-180"
-        /> */}
+        />
         <ReloadIcon action onClick={handleRefresh} />
         <AskIcon
           action

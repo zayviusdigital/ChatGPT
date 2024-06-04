@@ -20,7 +20,7 @@ use crate::core::{
 pub fn init(app: &mut App) -> Result<(), Box<dyn std::error::Error>> {
     let handle = app.handle();
 
-    let conf = &AppConf::load(handle).unwrap();
+    let conf = &AppConf::load(handle)?;
     let ask_mode_height = if conf.ask_mode { ASK_HEIGHT } else { 0.0 };
 
     template::Template::new(AppConf::get_scripts_path(handle)?);
