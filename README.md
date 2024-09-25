@@ -8,7 +8,7 @@
 [![twitter](https://img.shields.io/badge/follow-lencx__-blue?style=flat&logo=Twitter)](https://twitter.com/lencx_)
 [![youtube](https://img.shields.io/youtube/channel/subscribers/UC__gTZL-OZKDPic7s_6Ntgg?style=social)](https://www.youtube.com/@lencx)
 
-<a href="https://www.buymeacoffee.com/lencx" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" ></a>
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/zayviusdigital)
 
 ---
 
